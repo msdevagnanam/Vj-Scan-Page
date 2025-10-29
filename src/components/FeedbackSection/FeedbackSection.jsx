@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { FaChevronLeft, FaChevronRight ,FaStar } from "react-icons/fa";
+import React, { useRef, useEffect, useState } from "react";
+import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -34,13 +34,54 @@ const testimonials = [
 
 export default function FeedbackSection() {
   const sliderRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const loopData = [
+    testimonials[testimonials.length - 1],
+    ...testimonials,
+    testimonials[0],
+  ];
+  const updateCardWidth = () => {
+    const firstCard = sliderRef.current?.querySelector(".feedback-card");
+    if (!firstCard) return;
 
+    const width = firstCard.offsetWidth + 20;
+    setCardWidth(width);
+    sliderRef.current.style.scrollBehavior = "auto";
+    sliderRef.current.scrollLeft = width;
+    sliderRef.current.style.scrollBehavior = "smooth";
+  };
+
+  useEffect(() => {
+    setTimeout(updateCardWidth, 100);
+
+    window.addEventListener("resize", updateCardWidth);
+    window.addEventListener("orientationchange", updateCardWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateCardWidth);
+      window.removeEventListener("orientationchange", updateCardWidth);
+    };
+  }, []);
   const scroll = (direction) => {
-    const scrollAmount = 350;
-    if (direction === "left") {
-      sliderRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    const slider = sliderRef.current;
+    if (!slider || cardWidth === 0) return;
+
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+    if (direction === "right") {
+      if (slider.scrollLeft >= maxScroll - cardWidth) {
+        slider.style.scrollBehavior = "auto";
+        slider.scrollLeft = 0;
+        slider.style.scrollBehavior = "smooth";
+      }
+      slider.scrollBy({ left: cardWidth, behavior: "smooth" });
     } else {
-      sliderRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      if (slider.scrollLeft <= 0) {
+        slider.style.scrollBehavior = "auto";
+        slider.scrollLeft = maxScroll - cardWidth;
+        slider.style.scrollBehavior = "smooth";
+      }
+      slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
     }
   };
 
@@ -48,42 +89,138 @@ export default function FeedbackSection() {
     <section className="feedback-section">
       <div className="feedback-left">
         <h2>Our Patients Feedback</h2>
-        <p>
-          These are some customer testimonials who are satisfied with the place
-          & service we have provided
-        </p>
-
-        <div className="arrow-buttons">
+        <p>These are some customer testimonials...</p>
+        <div className="arrow-buttons desktop-arrows">
           <button className="left" onClick={() => scroll("left")}>
-             <FaChevronLeft />
+            <FaChevronLeft />
           </button>
           <button className="right" onClick={() => scroll("right")}>
-             <FaChevronRight />
+            <FaChevronRight />
+          </button>
+        </div>
+        <div className="slider-arrows-mobile">
+          <button className="left" onClick={() => scroll("left")}>
+            <FaChevronLeft />
+          </button>
+          <button className="right" onClick={() => scroll("right")}>
+            <FaChevronRight />
           </button>
         </div>
       </div>
 
       <div className="feedback-slider" ref={sliderRef}>
-        {testimonials.map((item) => (
-          <div key={item.id} className="feedback-card">
+        {loopData.map((item, i) => (
+          <div key={i} className="feedback-card">
             <div className="feedback-user">
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
             </div>
-             <hr />
-             <br />
+
+            <hr />
+            <br />
+
             <div className="stars">
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} />
               ))}
             </div>
 
-           
-
             <p>{item.feedback}</p>
           </div>
         ))}
       </div>
+
+      <style>
+        {`
+/* Desktop */
+.feedback-card {
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+}
+  .slider-arrows-mobile{
+  display:none;
+  }
+
+/* Tablet */
+@media (max-width: 900px) {
+  .feedback-card {
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+/* ✅ Mobile — EXACTLY ONE CARD, NO UNEVEN SCROLL */
+@media (max-width: 600px) {
+  .feedback-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+  /* ✅ Mobile: Move arrows to bottom center */
+@media (max-width: 600px) {
+
+  .arrow-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    position: relative;
+  }
+
+  .feedback-left {
+    text-align: center; /* optional */
+  }
+
+  /* Hide the arrows beside the title */
+  .feedback-left .arrow-buttons {
+    display: none;
+  }
+
+  /* Show arrows under slider */
+  .slider-arrows-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+    .feedback-slider{
+    gap:18px;
+    }
+}
+    @media (max-width: 600px) {
+  .slider-arrows-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .slider-arrows-mobile button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #0a4fa1;     /* your theme blue */
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .slider-arrows-mobile button:active {
+    transform: scale(0.9);
+    background: #e8f0ff;
+  }
+}
+
+`}
+      </style>
     </section>
   );
 }

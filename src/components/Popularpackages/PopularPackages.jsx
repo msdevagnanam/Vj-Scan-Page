@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const packages = [
@@ -50,42 +50,80 @@ const packages = [
 ];
 
 export default function PopularPackages() {
-  const scrollContainer = useRef(null);
+  const containerRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const loopData = [packages[packages.length - 1], ...packages, packages[0]];
+  const updateCardWidth = () => {
+    requestAnimationFrame(() => {
+      const card = containerRef.current?.querySelector(".card");
+      if (card) {
+        const width = card.getBoundingClientRect().width + 20; // gap
+        setCardWidth(width);
+      }
+    });
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      updateCardWidth();
+      setTimeout(() => {
+        if (containerRef.current) {
+          containerRef.current.scrollLeft = cardWidth;
+        }
+      }, 100);
+    }, 200);
 
-  // Looping scroll
+    window.addEventListener("resize", updateCardWidth);
+    window.addEventListener("orientationchange", updateCardWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateCardWidth);
+      window.removeEventListener("orientationchange", updateCardWidth);
+    };
+  }, [cardWidth]);
   const scroll = (direction) => {
-    const container = scrollContainer.current;
-    const cardWidth = 340; // Adjust to match .card min-width + gap
+    const container = containerRef.current;
+    if (!container || !cardWidth) return;
 
-    if (direction === "left") {
-      if (container.scrollLeft <= 0) {
-        container.scrollTo({
-          left: container.scrollWidth,
-          behavior: "smooth",
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+    if (direction === "next") {
+      if (container.scrollLeft >= maxScrollLeft - cardWidth) {
+        container.style.scrollBehavior = "auto";
+        container.scrollLeft = 0;
+
+        requestAnimationFrame(() => {
+          container.style.scrollBehavior = "smooth";
         });
-      } else {
-        container.scrollBy({ left: -cardWidth, behavior: "smooth" });
       }
+      container.scrollTo({
+        left: container.scrollLeft + cardWidth,
+        behavior: "smooth",
+      });
     } else {
-      const maxScroll =
-        container.scrollWidth - container.clientWidth - cardWidth / 2;
-      if (container.scrollLeft >= maxScroll) {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        container.scrollBy({ left: cardWidth, behavior: "smooth" });
+      if (container.scrollLeft <= 0) {
+        container.style.scrollBehavior = "auto";
+        container.scrollLeft = maxScrollLeft - cardWidth;
+
+        requestAnimationFrame(() => {
+          container.style.scrollBehavior = "smooth";
+        });
       }
+
+      container.scrollTo({
+        left: container.scrollLeft - cardWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
-    <div className="">
-      <section className="popular-section">
+    <section className="popular-section">
       <h2 className="section-title">Popular Health Packages</h2>
 
       <div className="slider-container">
-        <div className="cards-wrapper" ref={scrollContainer}>
-          {packages.map((pkg, i) => (
-            <div className="card" key={i}>
+        <div className="cards-wrapper" ref={containerRef}>
+          {loopData.map((pkg, index) => (
+            <div className="card" key={index}>
               <div className="card-header">
                 <h4>{pkg.title}</h4>
                 <div className="price-section">
@@ -96,32 +134,28 @@ export default function PopularPackages() {
                   <span className="discount">{pkg.discount}</span>
                 </div>
               </div>
-              <div>
-                  <div className="card-body">
-                  <p className="test-count">{pkg.tests}</p>
-                  <p className="details">{pkg.details}</p>
-                </div>
-                <div className="card-footer">
-                  <button className="view-btn">View Details</button>
-                  <button className="book-btn">Book Now</button>
-                </div>
+
+              <div className="card-body">
+                <p className="test-count">{pkg.tests}</p>
+                <p className="details">{pkg.details}</p>
+              </div>
+
+              <div className="card-footer">
+                <button className="view-btn">View Details</button>
+                <button className="book-btnc">Book Now</button>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Centered bottom navigation buttons */}
         <div className="slider-nav">
-          <button className="nav-btn left" onClick={() => scroll("left")}>
+          <button className="nav-btn left" onClick={() => scroll("prev")}>
             <FaChevronLeft />
           </button>
-          <button className="nav-btn right" onClick={() => scroll("right")}>
+          <button className="nav-btn right" onClick={() => scroll("next")}>
             <FaChevronRight />
           </button>
         </div>
       </div>
     </section>
-    </div>
-    
   );
 }

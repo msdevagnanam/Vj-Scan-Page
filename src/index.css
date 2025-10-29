@@ -1,5 +1,3 @@
-/* @import "tailwindcss"; */
-
 *{
   margin: 0;
   padding: 0;
@@ -255,13 +253,10 @@
   transform: scale(0.95);
 }
 
-
 .patients-card {
   position: absolute;
-  /* top: 0; */
   bottom: 14%;
   left: 10%;
-  /* transform: translateY(50%); */
   background: #ffffffcc;
   border-radius: 16px;
   padding: 20px;
@@ -396,6 +391,7 @@
   line-height: 1.4;
   margin-bottom: 10px;
 }
+
 .home-test-content p{
   font-family: 'DM Sans', sans-serif !important;
   font-size: 18px;
@@ -404,6 +400,7 @@
   margin-bottom: 30px;
   max-width: 95%;
 }
+
 .home-test-content .read-more-btn{
   font-family: "Urbanist", sans-serif !important;
   display: inline-flex;
@@ -429,8 +426,6 @@
   margin-bottom: 18px;
 }
 
-
-
 .home-test-image img{
   width: 100%;
   max-width: 460px;
@@ -449,10 +444,10 @@
     font-size: 36px;
   }
 
-.home-test-content p{
-  font-size: 16px;
-  max-width: 100%;
-}
+  .home-test-content p{
+    font-size: 16px;
+    max-width: 100%;
+  }
   .home-test-image {
     margin-top: 20px;
     display: flex;
@@ -469,10 +464,10 @@
     font-size: 25px;
   }
 
-.home-test-content p{
-  font-size: 13px;
-  max-width: 100%;
-}  
+  .home-test-content p{
+    font-size: 13px;
+    max-width: 100%;
+  }  
   .sub-heading{
     font-size: 18px;
   }
@@ -502,9 +497,9 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(270deg, #F1F9FF 46.41%, rgba(241, 249, 255, 0) 100%);
-  opacity: 0.4; /* Adjust opacity as needed */
+  opacity: 0.4;
   border-radius: 30px;
-  z-index: 1; /* Ensure it sits above the background image */ 
+  z-index: 1;
 }
 
 .slider-container{
@@ -523,8 +518,6 @@
 .slider-container {
   position: relative;
   width: 90%;
-  /* max-width: 1200px; */
-  /* padding: 0 40px; */
   margin: auto;
 }
 
@@ -642,7 +635,7 @@
   color:#0961A1;
   background: white;
   border-radius: 8px;
-  padding: 7px 15px;
+  padding: 15px 15px;
   cursor: pointer;
   transition: 0.3s;
   font-size: 16px;
@@ -654,7 +647,7 @@
   color: white;
 }
 
-.book-btn {
+.book-btnc {
   background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
   color: white;
   border: none;
@@ -666,11 +659,10 @@
   font-weight: 600;
 }
 
-.book-btn:hover {
+.book-btnc:hover {
  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
-/* ✅ Navigation buttons positioned at bottom center */
 .slider-nav {
   position: absolute;
   bottom: -60px;
@@ -699,7 +691,6 @@
   color: white;
 }
 
-/* ✅ Responsive adjustments */
 @media (max-width: 1200px) {
   .card {
     min-width: 300px;
@@ -739,10 +730,7 @@
     font-size: 13px;
   }
 
-  
-  
 }
-
 
 @media (max-width:460px){
 
@@ -751,6 +739,15 @@
   }
   .section-title{
     font-size: 25px;
+  }
+
+  .view-btn{
+    font-size: 12px;
+    padding: 10px 10px;
+  }
+  .book-btnc{
+    font-size: 12px;
+    padding: 7px 10px;
   }
 
   .card-header h4{
@@ -777,7 +774,6 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
-  /* max-width: 1150px; */
   margin: 0 auto;
 }
 
@@ -820,8 +816,6 @@ display: inline-flex;
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
-
-/* right side  */
 .diagnostic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -949,7 +943,6 @@ display: inline-flex;
 
 /* Our speclications */
 
-/* ===== Base Section ===== */
 .specialisation-section {
   background: #ffffff;
   padding: 40px 20px;
@@ -961,11 +954,9 @@ display: inline-flex;
   grid-template-columns: 1fr 1.1fr;
   gap: 50px;
   align-items: center;
-  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
-/* ===== Left Image ===== */
 .specialisation-image img {
   width: 100%;
   height: auto;
@@ -974,7 +965,6 @@ display: inline-flex;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Right Side Content ===== */
 .specialisation-content {
   display: flex;
   flex-direction: column;
@@ -990,7 +980,6 @@ display: inline-flex;
   margin-bottom: 30px;
 }
 
-/* ===== Grid ===== */
 .specialisation-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1030,8 +1019,6 @@ display: inline-flex;
   margin-bottom: 6px;
 }
 
-
-/* ===== Responsive Design ===== */
 @media (max-width: 992px) {
   .specialisation-container {
     grid-template-columns: 1fr;
@@ -1045,7 +1032,6 @@ display: inline-flex;
 
   .specialisation-card img{
     margin-left: 0;
-    /* width: 90%; */
   }
 
   .specialisation-image img {
@@ -1083,8 +1069,6 @@ display: inline-flex;
 
 /*  Vj Scan */
 
-
-/* Base Section */
 .why-section {
   padding: 40px 20px;
   font-family: "urbanist", sans-serif;
@@ -1092,11 +1076,9 @@ display: inline-flex;
 }
 
 .why-container {
-  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
-/* Heading */
 .why-title {
   font-family: "Urbanist", sans-serif !important;
   color: #0961A1;
@@ -1111,18 +1093,15 @@ display: inline-flex;
   font-weight: 500;
   color: #555555;
   line-height: 1.5;
-  /* max-width: 850px; */
   margin: 0 auto 60px;
 }
 
-/* Grid Layout */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
-/* Card Base */
 .why-card {
   position: relative;
   border-radius: 20px;
@@ -1143,13 +1122,11 @@ display: inline-flex;
   font-size: 29px;
 }
 
-/* Hover effect */
 .why-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* Text Card */
 .text-card {
   background: linear-gradient(131.25deg, #FFDCB7 0%, #FFFCF8 58.47%);
   border: 1px solid #eee;
@@ -1159,7 +1136,6 @@ display: inline-flex;
   line-height: 1.4;
 }
 
-/* Image Card */
 .image-card img {
   width: 100%;
   height: 100%;
@@ -1170,7 +1146,6 @@ display: inline-flex;
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, #0961A1 0%, rgba(9, 97, 161, 0) 100%);
-
 }
 
 .image-card h3 {
@@ -1183,13 +1158,11 @@ display: inline-flex;
   line-height: 1.4;
 }
 
-/* Taller middle image */
 .tall {
   grid-row: span 2;
   min-height: 430px;
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1240,7 +1213,6 @@ display: inline-flex;
   overflow: hidden; 
 }
 
-/* LEFT SIDE */
 .feedback-left {
   flex: 1 1 250px;
   max-width: 320px;
@@ -1285,7 +1257,6 @@ display: inline-flex;
   color: #fff;
 }
 
-/* MAIN SLIDER */
 .feedback-slider {
   flex: 2;
   display: flex;
@@ -1311,7 +1282,6 @@ display: inline-flex;
   width: 80%;
 }
 
-/* CARD */
 .feedback-card {
   flex: 0 0 320px; 
   background: #fff;
@@ -1357,14 +1327,12 @@ display: inline-flex;
   line-height: 1.5;
 }
 
-/* ✅ Large Tablet */
 @media (max-width: 1200px) {
   .feedback-left h2 {
     font-size: 32px;
   }
 }
 
-/* ✅ Tablet */
 @media (max-width: 992px) {
   .feedback-section {
     flex-direction: column;
@@ -1414,7 +1382,6 @@ display: inline-flex;
   }
 }
 
-/* ✅ Mobile Large */
 @media (max-width: 768px) {
   .feedback-left h2 {
     font-size: 26px;
@@ -1430,7 +1397,6 @@ display: inline-flex;
   }
 }
 
-/* ✅ Mobile Medium */
 @media (max-width: 576px) {
   .feedback-section {
     padding: 30px 4%;
@@ -1441,6 +1407,10 @@ display: inline-flex;
   }
   .feedback-left p{
     font-size: 14px;
+  }
+
+  .feedback-card p{
+    padding: 0 20px 0 0;
   }
 
   .feedback-card {
@@ -1454,7 +1424,6 @@ display: inline-flex;
   }
 }
 
-/* ✅ Small Phones */
 @media (max-width: 420px) {
   .feedback-card {
     flex: 0 0 50%;
@@ -1463,6 +1432,7 @@ display: inline-flex;
 
   .feedback-card p {
     font-size: 12px;
+    padding: 0 10px 0 0;
   }
 
   .feedback-left h2 {
@@ -1505,7 +1475,7 @@ display: inline-flex;
 
 .appointment-left {
   position: relative;
-  z-index: 2; /* Ensure content is above the overlay */
+  z-index: 2;
   color: white;
   text-align: left;
   padding-top: 130px;
@@ -1580,12 +1550,14 @@ display: inline-flex;
   object-fit: cover;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
 
+  .appointment-bgimg {
+    height: 550px;
+  }
 
   .appointment-left {
-    width: 85%;
+    width: 90%;
   }
 
   .appointment-left {
@@ -1612,14 +1584,21 @@ display: inline-flex;
   .appointment-left h2{
     font-size: 36px;
   }
-  
+
+  .appointment-bgimg {
+    height: 510px;
+  }
 }
 
 @media (max-width:480px){
   .appointment-left h2{
     font-size: 25px;
+  }.appointment-left {
+    width: 85%;
   }
-
+  .appointment-bgimg {
+    height: 485px;
+  }
 }
 
 
@@ -1737,7 +1716,6 @@ display: inline-flex;
   .faq-answer p{
     font-size: 12px;
   }
-
 }
 
 
@@ -1772,7 +1750,7 @@ display: inline-flex;
 .socials h4 {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #005ba3;
 }
 
