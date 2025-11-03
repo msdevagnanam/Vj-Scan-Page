@@ -1,0 +1,751 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/* Heresction_ct-scan */
+
+.ct_scan_section{
+    
+    border-radius: 30px;
+}
+
+.ct_scan_section{
+    position: relative;
+    overflow: hidden;
+    }
+
+    /* overlay */
+    .ct_scan_section::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(270deg, rgba(9, 97, 161, 0) 32.23%, #0961A1 49.44%);
+        opacity: 1.5;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+
+    /* ensure content sits above the overlay */
+    .ct_scan_section {
+        position: relative;
+        z-index: 2;
+    }
+
+
+.ct_scan_contant{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+.ct_scan_left{
+    padding: 60px 30px;
+    z-index: 3;
+}
+
+.ct_scan_left h1{
+    font-family: "Urbanist", sans-serif !important;
+    font-size: 40px;
+    color: #ffff;
+    margin-bottom: 20px;
+}
+
+.ct_scan_left p{
+    font-family:"DM Sans", sans-serif !important;
+    font-size: 18px;
+    color: #ffff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.left-btn{
+    display: flex;
+    gap: 15px;
+}
+
+.btn_ct_scan{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+
+.btn_ct_scan:active{
+    transform: scale(0.95);
+}
+
+.left-btn button:nth-child(2){
+    background: rgba(255, 255, 255, 1);
+    color: #F38919;
+    box-shadow: 0 3px 8px rgba(52, 172, 224, 0.3);
+}
+
+#icon_ct_scan1{
+    background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
+    color:#fff;
+}
+
+.icon_ct_scan{
+    background-color:#fff;
+    border-radius: 50%;
+    padding: 8px;
+    color: #F38919;
+}
+
+.ct_scan_right{
+  height: -webkit-fill-available;
+}
+.ct_scan_right img{
+  height: 100%;
+    border-radius: 0 30px 30px 0;
+}
+
+@media (max-width:1392px){
+  .ct_scan_right img{
+    width: 100%;
+    height: 425px;
+  }
+
+}
+
+@media (max-width:975px) {
+    .ct_scan_left h1{
+    font-size: 30px;    
+  }
+
+  .ct_scan_left p{
+    font-size: 16px;
+  }
+}
+
+@media (max-width:768px){
+  .ct_scan_contant{
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  } 
+
+  .ct_scan_right img{
+    width: 100%;
+  }
+
+  .ct_scan_left .left-btn{
+    justify-content: center;
+  }
+
+  .ct_scan_contant img{
+    width: 100%;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .icon_ct_scan{
+    padding: 4px;
+  }
+
+  .btn_ct_scan{
+    font-size: 14px;
+    padding: 6px 12px;
+
+  }
+
+  .ct_scan_section::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(9, 97, 161, 0) 32.23%, #0961A1 49.44%);
+        opacity: 1.5;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+}
+
+@media (max-width:480px){
+  .ct_scan_left h1{
+    font-size: 30px;    
+  }
+
+  .ct_scan_left p{
+    font-size: 16px;
+  }
+
+  .btn_ct_scan{
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+
+  .left-btn{
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn_ct_scan{
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+
+}
+
+
+/* CT Scan information */
+
+.ct-info-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.ct-left img {
+  width: 430px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.ct-right {
+  background: linear-gradient(131.25deg, rgba(255, 220, 183, 0.4) 0%, rgba(255, 252, 248, 0.4) 58.47%);
+  flex: 1;
+  padding: 34px;
+  border: 1px solid #eeeeee;
+  border-radius: 30px;
+}
+
+.ct-right h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 46px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.ct-right h2 span {
+  color: #0961A1;
+}
+
+.ct-right p {
+  font-family:"DM Sans", sans-serif !important;
+  font-size: 18px;
+  color: #393939;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.ct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn:active{ 
+  transform: scale(0.95);
+}
+
+
+@media (max-width: 900px) {
+  .ct-info-section {
+    flex-direction: column;
+    text-align: center;
+    /* padding: 30px 20px; */
+    gap: 20px;
+  }
+
+  .mri-left img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ct-right {
+    padding: 24px;
+  }
+
+  .ct-left img{
+    width: 100%;
+  }
+
+  .ct-right h2 {
+    font-size: 36px;
+  }
+
+  .ct-right p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+}
+
+@media (max-width: 480px) {
+  .ct-right h2 {
+    font-size: 30px;
+  }
+
+  .ct-left img{
+    width: 100%;
+  }
+
+  .ct-right p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+}
+
+
+/* CTScanTypes */
+
+.ct-types-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 62px 70px;
+  background: #F1F9FF;
+  gap: 40px;
+}
+
+.ct-types-left {
+  flex: 1;
+  max-width: 45%;
+}
+
+.ct-types-left h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 44px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.ct-types-left p {
+  font-family:"DM Sans", sans-serif !important;
+  font-size: 18px;
+  color: #393939;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.ct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn:active{ 
+  transform: scale(0.95);
+}
+
+.ct-types-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.ct-card {
+  background: linear-gradient(135deg, #F5F5F5 12.57%, #E5E5E5 86.98%);
+  padding: 35px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+  transition: 0.3s;
+}
+
+.ct-card:hover {
+  transform: translateY(-4px);
+}
+
+.ct-card img {
+  width: 80px;
+  margin-bottom: 0px;
+}
+
+.pct-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.pct-card p {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 20px;
+  font-weight: 500;
+  color: #595959;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .ct-types-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ct-types-left {
+    max-width: 100%;
+  }
+
+  .ct-types-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ct-types-section {
+    padding: 12px 25px;
+    gap: 20px;
+  }
+
+  .ct-types-left h2 {
+    font-size: 36px;
+  }
+
+  .ct-types-left p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+
+      .pct-card{
+    align-items:normal;
+  }
+    
+    .ct-card img {
+    width: 60px;
+    margin-bottom: 0px;
+    }
+}   
+
+@media (max-width: 480px) {
+  .ct-types-left h2 {
+    font-size: 30px;
+  }
+
+  .ct-types-left p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+
+    .ct-types-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    }
+}   
+
+
+/* CTPerparation */
+
+.prep-section {
+  text-align: center;
+}
+
+.prep-title {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 44px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 40px;
+  line-height: 1.3;
+}
+
+.prep-cards {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.prep-card {
+  width: 27%;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.prep-card h3 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 38px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 40px;
+  line-height: 1.3;
+}
+
+.prep-card ul {
+  padding-left: 18px;
+}
+
+.prep-card ul li {
+  font-family:"DM Sans", sans-serif !important;
+  font-size: 18px;
+  color: #393939;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.light-orange {
+  background: linear-gradient(160.93deg, rgba(255, 220, 183, 0.4) 12.84%, rgba(255, 252, 248, 0.4) 56.03%);
+}
+
+.light-blue {
+  background: linear-gradient(180deg, rgba(70, 152, 211, 0.35) 0%, rgba(255, 255, 255, 0.35) 80.59%);
+}
+
+@media (max-width: 900px) {
+  .prep-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prep-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+.prep-card {
+    width: 90%;
+  }
+
+  .prep-cards{
+    gap: 30px;
+  }
+
+  .prep-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .prep-card h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  .prep-card ul li {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+    .prep-card {
+        width: 75%;
+    }
+    .prep-cards{
+      gap: 20px;
+    }
+    .prep-title {
+        font-size: 30px;
+    }
+    
+    .prep-card h3 {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+    
+    .prep-card ul li {
+        font-size: 16px;
+    }
+
+}
+
+/* CTScanBooking */
+
+.booking-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  gap: 40px;
+}
+
+.booking-left {
+  flex: 1;
+}
+
+.booking-left h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 44px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 30px;
+  line-height: 1.3;
+}
+
+/* FORM */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+.form-row input,
+.form-row select {
+  font-family: "Urbanist", sans-serif !important;
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  font-size: 15px;
+  outline: none;
+  background: #ffffff;
+  color: #3E4D5C;
+}
+
+.form-row input::placeholder {
+  color: #777;
+}
+
+.book-btn {
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.book-btn:active{ 
+  transform: scale(0.95);
+}
+
+.booking-right img {
+  width: 520px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .booking-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .booking-left {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .booking-right img {
+    width: 100%;
+  }
+
+  .book-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-section {
+    gap: 20px;
+  }
+
+  .booking-left h2 {
+    font-size: 36px;
+  }
+
+  .form-row input,
+  .form-row select {
+    font-size: 16px;
+  }
+
+  .book-btn {
+    font-size: 16px;
+    padding: 8px 18px;
+  } 
+}
+
+@media (max-width: 480px) {
+  .booking-left h2 {
+    font-size: 30px;
+  }
+
+  .form-row input,
+  .form-row select {
+    font-size: 16px;
+  }
+
+  .book-btn {
+    font-size: 16px;
+    padding: 8px 18px;
+  } 
+}
+
+@media (max-width:350px){
+  .booking-left h2 {
+    font-size: 20px;
+  }
+
+  .form-row input,
+  .form-row select {
+    font-size: 10px;
+  }
+
+  .book-btn {
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+}

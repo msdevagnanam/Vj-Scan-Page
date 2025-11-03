@@ -1,0 +1,478 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* MIR Herosection */
+
+.mri_section{
+    
+    border-radius: 30px;
+}
+
+.mri_section{
+    position: relative;
+    overflow: hidden;
+    }
+
+    /* overlay */
+    .mri_section::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(270deg, rgba(9, 97, 161, 0) 32.23%, #0961A1 49.44%);
+        opacity: 1.5;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+
+    /* ensure content sits above the overlay */
+    .mri_section {
+        position: relative;
+        z-index: 2;
+    }
+
+
+.mri_contant{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+.mri_left{
+    padding: 60px 30px;
+    z-index: 3;
+}
+
+.mri_left h1{
+    font-family: "Urbanist", sans-serif !important;
+    font-size: 40px;
+    color: #ffff;
+    margin-bottom: 20px;
+}
+
+.mri_left p{
+    font-family:"DM Sans", sans-serif !important;
+    font-size: 18px;
+    color: #ffff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.left-btn{
+    display: flex;
+    gap: 15px;
+}
+
+.mri_scan{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+
+.mri_scan:active{
+    transform: scale(0.95);
+}
+
+.left-btn button:nth-child(2){
+    background: rgba(255, 255, 255, 1);
+    color: #F38919;
+    box-shadow: 0 3px 8px rgba(52, 172, 224, 0.3);
+}
+
+#icon_mri1{
+    background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
+    color:#fff;
+}
+
+.icon_mri{
+    background-color:#fff;
+    border-radius: 50%;
+    padding: 8px;
+    color: #F38919;
+}
+
+.mri_right{
+    height: -webkit-fill-available;
+}
+.mri_right img{
+    height: 100%;
+    border-radius: 0 30px 30px 0;
+}
+
+@media (max-width:1392px){
+  .mri_right img{
+    width: 100%;
+    height: 425px;
+  }
+
+}
+
+@media (max-width:975px) {
+    .mri_left h1{
+    font-size: 30px;    
+  }
+
+  .mri_left p{
+    font-size: 16px;
+  }
+}
+
+@media (max-width:768px){
+  .mri_contant{
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  } 
+
+  .mri_right img{
+    border-radius: 0 0 30px 30px;
+    height: none;
+  }
+
+  .mri_left .left-btn{
+    justify-content: center;
+  }
+
+  .mri_contant img{
+    width: 100%;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .icon_mri{
+    padding: 4px;
+  }
+
+  .mri_scan{
+    font-size: 14px;
+    padding: 6px 12px;
+
+  }
+
+  .mri_section::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(9, 97, 161, 0) 32.23%, #0961A1 49.44%);
+        opacity: 1.5;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+}
+
+@media (max-width:480px){
+  .mri_left h1{
+    font-size: 30px;    
+  }
+
+  .mri_left p{
+    font-size: 16px;
+  }
+
+  .mri_scan{
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+
+  .left-btn{
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mri_scan{
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+
+}
+
+/* MRI Information */
+
+.mri-info-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.mri-left img {
+  width: 430px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.mri-right {
+  background: linear-gradient(131.25deg, rgba(255, 220, 183, 0.4) 0%, rgba(255, 252, 248, 0.4) 58.47%);
+  flex: 1;
+  padding: 34px;
+  border: 1px solid #eeeeee;
+  border-radius: 30px;
+}
+
+.mri-right h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 46px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.mri-right h2 span {
+  color: #0961A1;
+}
+
+.mri-right p {
+  font-family:"DM Sans", sans-serif !important;
+  font-size: 18px;
+  color: #393939;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.ct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn:active{ 
+  transform: scale(0.95);
+}
+
+
+@media (max-width: 900px) {
+  .mri-info-section {
+    flex-direction: column;
+    text-align: center;
+    /* padding: 30px 20px; */
+  }
+
+  .mri-left img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mri-right {
+    padding: 24px;
+  }
+
+  .mri-right h2 {
+    font-size: 36px;
+  }
+
+  .mri-right p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+}
+
+@media (max-width: 480px) {
+  .mri-right h2 {
+    font-size: 30px;
+  }
+
+  .mri-right p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+}
+
+
+/* MRI Type */
+
+.mri-types-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 62px 120px;
+  background: #F1F9FF;
+  gap: 40px;
+}
+
+.mri-types-left {
+  flex: 1;
+  max-width: 45%;
+}
+
+.mri-types-left h2 {
+  font-family: "Urbanist", sans-serif !important;
+  font-size: 44px;
+  font-weight: 700;
+  color: #0961A1;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.mri-types-left p {
+  font-family:"DM Sans", sans-serif !important;
+  font-size: 18px;
+  color: #393939;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.ct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Urbanist", sans-serif !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn:active{ 
+  transform: scale(0.95);
+}
+
+.mri-types-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.ct-card {
+  background: linear-gradient(135deg, #F5F5F5 12.57%, #E5E5E5 86.98%);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+  transition: 0.3s;
+}
+
+.ct-card:hover {
+  transform: translateY(-4px);
+}
+
+.ct-card img {
+  width: 70px;
+  margin-bottom: 0px;
+}
+
+.pct-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.pct-card p {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 20px;
+  font-weight: 500;
+  color: #595959;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .mri-types-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mri-types-left {
+    max-width: 100%;
+  }
+
+  .mri-types-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mri-types-section {
+    padding: 12px 25px;
+    gap: 20px;
+  }
+
+  .mri-types-left h2 {
+    font-size: 36px;
+  }
+
+  .mri-types-left p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+    
+      .pct-card{
+    align-items:normal;
+  }
+  
+    .ct-card img {
+    width: 60px;
+    margin-bottom: 0px;
+    }
+
+    .mri-types-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    }
+}   
+
+@media (max-width: 480px) {
+  .mri-types-left h2 {
+    font-size: 30px;
+  }
+
+  .mri-types-left p {
+    font-size: 16px;
+  } 
+    .ct-btn {
+        font-size: 16px;
+        padding: 8px 18px;
+    }   
+
+    .mri-types-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    }
+} 

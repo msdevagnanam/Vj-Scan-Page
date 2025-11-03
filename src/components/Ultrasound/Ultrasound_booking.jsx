@@ -1,0 +1,52 @@
+import React from 'react'
+
+function Ultrasound_booking() {
+  return (
+    <div>
+        <div className="container">
+            <div className="booking-section">
+                <div className="booking-left">
+                    <h2>Book Your CT Scan</h2>
+
+                    <form className="booking-form">
+                    <div className="form-row">
+                        <input type="text" placeholder="Your Name*" />
+                        <input type="email" placeholder="Email ID*" />
+                    </div>
+
+                    <div className="form-row">
+                        <input type="text" placeholder="Phone Number*" />
+                        <select>
+                        <option>Type Of Scan</option>
+                        <option>Brain CT</option>
+                        <option>Chest CT</option>
+                        <option>Abdominal CT</option>
+                        </select>
+                    </div>
+
+                    <div className="form-row">
+                        <input type="date" placeholder="Date*" />
+                        <select>
+                        <option>Time Slot*</option>
+                        <option>09:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>03:00 PM</option>
+                        </select>
+                    </div>
+
+                    <button className="book-btn">Book Now</button>
+                    </form>
+                </div>
+                <div className="booking-right">
+                    <img
+                    src="images/Ultrasound_booking.png"
+                    alt="CT Scan"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Ultrasound_booking
