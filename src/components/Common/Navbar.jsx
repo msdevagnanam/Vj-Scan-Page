@@ -22,7 +22,7 @@ const Navbar = () => {
           </div>
 
           <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-            <li><a href="/home">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="#">Specialities</a></li>
             <li className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} >
               <a href="#">Scans</a>
