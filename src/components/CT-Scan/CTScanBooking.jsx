@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { CiCalendar } from "react-icons/ci";
+
 function CTScanBooking() {
   return (
     <div>
@@ -25,24 +27,21 @@ function CTScanBooking() {
                     </div>
 
                     <div className="form-row">
-{/* Form field */}
-<div className="date-picker-wrapper">
-  <input id="appointment-date" type="date" className="date-input" />
-  <button
-    type="button"
-    className="calendar-button"
-    onClick={() => {
-      const el = document.getElementById('appointment-date');
-      // Open the native picker when supported
-      if (el?.showPicker) el.showPicker();
-      else el?.focus();
-    }}
-    aria-label="Open date picker"
-  >
-    {/* You can replace with any icon component */}
-    📅
-  </button>
-</div>
+                        <div className="date-picker-wrapper">
+                        <input id="appointment-date" type="date" className="date-input" placeholder="mm/dd/yyyy" />
+                        <button
+  type="button"
+  className="calendar-button"
+  onClick={() => {
+    const el = document.getElementById('appointment-date');
+    if (el?.showPicker) el.showPicker();
+    else el?.focus();
+  }}
+  aria-label="Open date picker"
+>
+  <CiCalendar size={18} />
+</button>
+                        </div>
 
                         <select>
                         <option>Time Slot*</option>

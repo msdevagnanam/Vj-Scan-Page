@@ -651,37 +651,17 @@
   color: #777;
 }
 
-/* input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-}
 
-.date-picker-wrapper {
-  position: relative;
-}
 
-.calendar-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 18px;
-} */
-
-/* 1) Container to position the custom icon */
 .date-picker-wrapper {
   position: relative;
   width: 49%;
 }
 
-/* 2) Your date input – match your existing styles */
 .date-input {
   width: 92%;
-  /* height: 48px;  */           /*   adjust to your form height */
-  padding: 0 44px 0 16px;     /* right padding leaves room for the icon */
+  /* height: 48px;  */           
+  padding: 0 44px 0 16px;    
   border-radius: 12px;
   border: 1px solid #e6e6e6;
   font-size: 16px;
@@ -689,20 +669,17 @@
   background: #fff;
 }
 
-/* 3) Hide the native calendar indicator on WebKit (Android/iOS browsers) */
 .date-input::-webkit-calendar-picker-indicator {
-  opacity: 0;                 /* keep it clickable but invisible */
+  opacity: 0;               
   position: absolute;
   right: 16px;
 }
 
-/* Some Android skins also render extra spinners – hide them */
 .date-input::-webkit-inner-spin-button,
 .date-input::-webkit-clear-button {
   display: none;
 }
 
-/* 4) Our custom calendar button (icon on the right) */
 .calendar-button {
   position: absolute;
   right: 12px;
@@ -720,7 +697,7 @@
   padding: 0;
 }
 
-/* Prevent the button from stealing layout on small screens */
+
 .calendar-button:focus {
   outline: none;
 }
@@ -758,13 +735,6 @@
   .date-input{
     width:85%;
   }
-  /* .date-picker-wrapper {
-    width: 48%;
-  }
-  
-  .calendar-button{
-    right: -30px;
-  } */
 
 }
 
