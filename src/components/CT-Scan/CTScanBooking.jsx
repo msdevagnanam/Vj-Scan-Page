@@ -28,11 +28,16 @@ function CTScanBooking() {
 
                     <div className="form-row">
                         <div className="date-picker-wrapper">
-                        <div className="date-wrapper">
-  <input type="date" id="date" required />
-  <label htmlFor="date">mm/dd/yyyy</label>
-</div>
-
+                        <input
+                            id="appointment-date"
+                            type="date"
+                            className="date-input"
+                            placeholder="mm/dd/yyyy"
+                            onFocus={() => {
+                            const el = document.getElementById("appointment-date");
+                            if (el?.showPicker) el.showPicker(); // open native picker
+                            }}
+                        />
 
                         <button
                             type="button"
