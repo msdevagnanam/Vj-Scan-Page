@@ -27,21 +27,31 @@ function CTScanBooking() {
                     </div>
 
                     <div className="form-row">
-                        <div className="date-picker-wrapper">
-                        <input id="appointment-date" type="date" className="date-input" placeholder="mm/dd/yyyy" />
-                        <button
-  type="button"
-  className="calendar-button"
-  onClick={() => {
-    const el = document.getElementById('appointment-date');
-    if (el?.showPicker) el.showPicker();
-    else el?.focus();
-  }}
-  aria-label="Open date picker"
->
-  <CiCalendar size={18} />
-</button>
-                        </div>
+<div className="date-picker-wrapper">
+  <input
+    id="appointment-date"
+    type="text"
+    className="date-input"
+    placeholder="mm/dd/yyyy"
+    onFocus={() => {
+      const el = document.getElementById("appointment-date");
+      if (el?.showPicker) el.showPicker(); // open native picker
+    }}
+  />
+
+  <button
+    type="button"
+    className="calendar-button"
+    onClick={() => {
+      const el = document.getElementById("appointment-date");
+      if (el?.showPicker) el.showPicker();
+      else el?.focus();
+    }}
+  >
+    <CiCalendar size={18} />
+  </button>
+</div>
+
 
                         <select>
                         <option>Time Slot*</option>
