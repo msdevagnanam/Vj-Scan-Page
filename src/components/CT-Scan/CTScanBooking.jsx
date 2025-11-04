@@ -30,7 +30,7 @@ function CTScanBooking() {
 <div className="date-picker-wrapper">
   <input
     id="appointment-date"
-    type="text"
+    type="date"
     className="date-input"
     placeholder="mm/dd/yyyy"
     onFocus={() => {
