@@ -44,3 +44,4 @@ function CTScanTypes() {
 }
 
 export default CTScanTypes;
+
