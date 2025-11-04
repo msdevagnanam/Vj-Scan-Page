@@ -703,6 +703,33 @@
 }
 
 
+/* new calender css */
+
+.date-wrapper {
+  position: relative;
+}
+
+.date-wrapper input {
+  width: 92%;
+  /* padding: 15px; */
+}
+
+.date-wrapper label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9b9b9b;
+  pointer-events: none;
+}
+
+/* Hide label when date is selected */
+.date-wrapper input:valid + label,
+.date-wrapper input:not(:placeholder-shown) + label {
+  display: none;
+}
+
+
 
 
 .book-btn {
