@@ -25,7 +25,25 @@ function CTScanBooking() {
                     </div>
 
                     <div className="form-row">
-                        <input type="date" placeholder="Date*" />
+{/* Form field */}
+<div className="date-picker-wrapper">
+  <input id="appointment-date" type="date" className="date-input" />
+  <button
+    type="button"
+    className="calendar-button"
+    onClick={() => {
+      const el = document.getElementById('appointment-date');
+      // Open the native picker when supported
+      if (el?.showPicker) el.showPicker();
+      else el?.focus();
+    }}
+    aria-label="Open date picker"
+  >
+    {/* You can replace with any icon component */}
+    📅
+  </button>
+</div>
+
                         <select>
                         <option>Time Slot*</option>
                         <option>09:00 AM</option>

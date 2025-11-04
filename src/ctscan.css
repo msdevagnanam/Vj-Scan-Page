@@ -651,6 +651,83 @@
   color: #777;
 }
 
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+.date-picker-wrapper {
+  position: relative;
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 18px;
+} */
+
+/* 1) Container to position the custom icon */
+.date-picker-wrapper {
+  position: relative;
+  width: 49%;
+}
+
+/* 2) Your date input – match your existing styles */
+.date-input {
+  width: 92%;
+  /* height: 48px;  */           /*   adjust to your form height */
+  padding: 0 44px 0 16px;     /* right padding leaves room for the icon */
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  font-size: 16px;
+  line-height: 1;
+  background: #fff;
+}
+
+/* 3) Hide the native calendar indicator on WebKit (Android/iOS browsers) */
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;                 /* keep it clickable but invisible */
+  position: absolute;
+  right: 16px;
+}
+
+/* Some Android skins also render extra spinners – hide them */
+.date-input::-webkit-inner-spin-button,
+.date-input::-webkit-clear-button {
+  display: none;
+}
+
+/* 4) Our custom calendar button (icon on the right) */
+.calendar-button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  /* left:53%; */
+  transform: translateY(-50%);
+  height: 32px;
+  width: 32px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Prevent the button from stealing layout on small screens */
+.calendar-button:focus {
+  outline: none;
+}
+
+
+
+
 .book-btn {
     margin-top: 10px;
     background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
@@ -676,6 +753,21 @@
   object-fit: cover;
 }
 
+@media (max-width: 1200px){
+
+  .date-input{
+    width:85%;
+  }
+  /* .date-picker-wrapper {
+    width: 48%;
+  }
+  
+  .calendar-button{
+    right: -30px;
+  } */
+
+}
+
 @media (max-width: 900px) {
   .booking-section {
     flex-direction: column;
@@ -695,6 +787,17 @@
 
   .book-btn {
     width: 100%;
+  }
+
+  .date-input{
+    width: 100%;
+  }
+  .date-picker-wrapper {
+    width: 96%;
+  }
+  
+  .calendar-button{
+    right: -25px;
   }
 }
 
@@ -716,6 +819,14 @@
     font-size: 16px;
     padding: 8px 18px;
   } 
+
+  .date-input{
+    width: 100%;
+  }
+  .date-picker-wrapper {
+    width: 95%;
+  }
+  
 }
 
 @media (max-width: 480px) {
@@ -732,6 +843,13 @@
     font-size: 16px;
     padding: 8px 18px;
   } 
+
+  .date-input{
+    width: 100%;
+  }
+  .date-picker-wrapper {
+    width: 93%;
+  }
 }
 
 @media (max-width:350px){
@@ -747,5 +865,35 @@
   .book-btn {
     font-size: 16px;
     padding: 8px 18px;
+  }
+
+   .date-input{
+    width: 100%;
+  }
+  .date-picker-wrapper {
+    width: 89%;
+  }
+}
+
+@media (max-width:250px){
+  .booking-left h2 {
+    font-size: 18px;
+  }
+
+  .form-row input,
+  .form-row select {
+    font-size: 8px;
+  }
+
+  .book-btn {
+    font-size: 14px;
+    padding: 6px 16px;
+  } 
+
+   .date-input{
+    width: 100%;
+  }
+  .date-picker-wrapper {
+    width: 85%;
   }
 }
