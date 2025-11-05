@@ -81,6 +81,10 @@
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
 }
 
+.x_ray_scan:hover{
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
 
 .x_ray_scan:active{
     transform: scale(0.95);
@@ -260,6 +264,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+.x-ray-btn:hover{
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
 .x-ray-btn:active{ 

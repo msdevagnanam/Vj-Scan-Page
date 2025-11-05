@@ -68,7 +68,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(90deg, #ff8c00 0%, #ffb347 100%);
+    background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
+
     color: #fff;
     font-weight: 500;
     font-size: 18px;
@@ -79,6 +80,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.btn_ct_scan:hover{
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
 
@@ -260,6 +265,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn:hover{
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
 .ct-btn:active{ 
@@ -716,7 +725,7 @@
     font-weight: 500;
     font-size: 18px;
     font-family: "Urbanist", sans-serif !important;
-    padding: 10px 20px;
+    padding: 14px 20px;
     border: none;
     border-radius: 9px;
     cursor: pointer;

@@ -478,6 +478,10 @@
   box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
 }
 
+.home-test-content  .read-more-btn:hover {
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
 .sub-heading {
   font-family: "Playfair Display", serif;
   font-size: 26px;
@@ -1587,11 +1591,11 @@ display: inline-flex;
 }
 
 .book-btn {
-  background: linear-gradient(90deg, #ff9500, #ffb347);
+  background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 14px 24px;
+  padding: 14px 24px !important;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -1600,7 +1604,8 @@ display: inline-flex;
 }
 
 .book-btn:hover {
-  opacity: 0.9;
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+
 }
 
 .appointment-right {
