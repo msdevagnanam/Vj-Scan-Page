@@ -27,37 +27,30 @@ function CTScanBooking() {
                     </div>
 
                     <div className="form-row">
-<div className="date-picker-wrapper">
-  <input
-    id="appointment-date"
-    type="date"
-    className="date-input"
-    onFocus={(e) => {
-      e.target.classList.add("has-value");
-    }}
-    onChange={(e) => {
-      if (e.target.value) {
-        e.target.classList.add("has-value");
-      } else {
-        e.target.classList.remove("has-value");
-      }
-    }}
-  />
+                        <div className="date-picker-wrapper">
+                        <input
+                            id="appointment-date"
+                            type="date"
+                            className="date-input"
+                            placeholder="mm/dd/yyyy"
+                            onFocus={() => {
+                            const el = document.getElementById("appointment-date");
+                            if (el?.showPicker) el.showPicker(); // open native picker
+                            }}
+                        />
 
-  <span className="date-placeholder">dd/mm/yyyy</span>
-
-  <button
-    type="button"
-    className="calendar-button"
-    onClick={() => {
-      const el = document.getElementById("appointment-date");
-      if (el?.showPicker) el.showPicker();
-      else el?.focus();
-    }}
-  >
-    <CiCalendar size={18} />
-  </button>
-</div>
+                        <button
+                            type="button"
+                            className="calendar-button"
+                            onClick={() => {
+                            const el = document.getElementById("appointment-date");
+                            if (el?.showPicker) el.showPicker();
+                            else el?.focus();
+                            }}
+                        >
+                            <CiCalendar size={18} />
+                        </button>
+                        </div>
                         <select>
                         <option>Time Slot*</option>
                         <option>09:00 AM</option>
