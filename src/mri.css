@@ -7,7 +7,7 @@
 
 .mri_section{
     
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .mri_section{
@@ -82,7 +82,17 @@
 }
 
 .mri_scan:hover{
+  transform: translateY(-2px);
     background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.mri_scan .icon_mri {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.mri_scan:hover .icon_mri {
+  transform: translateX(10px);
 }
 
 .mri_scan:active{

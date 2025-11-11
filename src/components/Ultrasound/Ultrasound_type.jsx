@@ -16,7 +16,7 @@ return (
                                     </p>
 
                                     <button className="ct-btn">
-                                    Book Now <span><BsArrowUpRightCircleFill size={30}  /></span>
+                                    Book Now <span><BsArrowUpRightCircleFill size={30} className='arrow' /></span>
                                     </button>
                             </div>
                             <div className="mri-types-right">

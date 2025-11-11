@@ -7,7 +7,7 @@
 
 .ct_scan_section{
     
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .ct_scan_section{
@@ -69,7 +69,6 @@
     align-items: center;
     gap: 8px;
     background: linear-gradient(84.92deg, #F98D1B 34.11%, #FFC180 105.58%);
-
     color: #fff;
     font-weight: 500;
     font-size: 18px;
@@ -83,9 +82,19 @@
 }
 
 .btn_ct_scan:hover{
+  transform: translateY(-2px);
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
+.btn_ct_scan .icon_ct_scan {
+  display: inline-flex;
+  /* padding: 3px 0px; */
+  transition: transform 0.3s ease;
+}
+
+.btn_ct_scan:hover .icon_ct_scan {
+  transform: translateX(10px);
+}
 
 .btn_ct_scan:active{
     transform: scale(0.95);
@@ -114,7 +123,7 @@
 }
 .ct_scan_right img{
   height: 100%;
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 15px 15px 0;
 }
 
 @media (max-width:1392px){
@@ -268,7 +277,18 @@
 }
 
 .ct-btn:hover{
+  transform: translateY(-2px);
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.ct-btn .arrow {
+  display: inline-flex;
+  /* padding: 3px 0px; */
+  transition: transform 0.3s ease;
+}
+
+.ct-btn:hover .arrow {
+  transform: translateX(10px);
 }
 
 .ct-btn:active{ 
@@ -519,6 +539,11 @@
   background: #fff;
   border: 1px solid #eaeaea;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+}
+
+.prep-card:hover {
+  transform: translateY(-5px);
 }
 
 .prep-card h3 {

@@ -21,7 +21,7 @@ function XrayInfoSection() {
                     </p>
 
                     <button className="x-ray-btn">
-                    Book Now <span><BsArrowUpRightCircleFill size={30}  /></span>
+                    Book Now <span><BsArrowUpRightCircleFill size={30} className='arrow'  /></span>
                     </button>
                 </div>
                 <div className="x-ray-left">

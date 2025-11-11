@@ -7,7 +7,7 @@
 
 .x_ray_section{
     
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .x_ray_section{
@@ -83,6 +83,19 @@
 
 .x_ray_scan:hover{
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.x_ray_scan:hover{
+  transform: translateY(-2px);
+}
+
+.x_ray_scan .icon_x_ray {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.x_ray_scan:hover .icon_x_ray {
+  transform: translateX(10px);
 }
 
 
@@ -266,7 +279,18 @@
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
 }
 .x-ray-btn:hover{
+  transform: translateY(-2px);
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.x-ray-btn .arrow {
+  display: inline-flex;
+  /* padding: 3px 0px; */
+  transition: transform 0.3s ease;
+}
+
+.x-ray-btn:hover .arrow {
+  transform: translateX(10px);
 }
 
 .x-ray-btn:active{ 
@@ -367,6 +391,15 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
+}
+
+.ct-btn .arrow {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.ct-btn:hover .arrow {
+  transform: translateX(10px);
 }
 
 .ct-btn:active{ 

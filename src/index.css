@@ -246,8 +246,8 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 790px;
-  border-radius: 30px;
+  height: 660px;
+  border-radius: 15px;
 }
 .hero-section::before {
   content: '';
@@ -258,7 +258,7 @@
   bottom: 0;
   background: radial-gradient(210.46% 100% at 50.04% 0%, #0961A1 12.63%, rgba(9, 97, 161, 0) 68.05%);
   opacity: 1; /* Adjust opacity as needed */
-  border-radius: 30px;
+  border-radius: 15px;
   z-index: 1; /* Ensure it sits above the background image */
 }
 
@@ -309,9 +309,25 @@
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
+
 .btn-hero:active {
   transform: scale(0.95);
 }
+
+/* Arrow transition */
+.btn-hero .arrow {
+  display: inline-flex;
+  padding: 3px 0px;
+  transition: transform 0.3s ease;
+}
+
+/* When hovering, arrow moves slightly downward */
+.btn-hero:hover .arrow {
+  transform: translateX(10px);
+  /* transform: rotate(90deg); */
+}
+
+
 
 .patients-card {
   position: absolute;
@@ -371,6 +387,121 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* ====== Animation Keyframes ====== */
+
+/* Hero section fade-in with scale */
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Text slide-up animation */
+@keyframes textSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button subtle pulse */
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Patients card fade-in */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Avatar pop-in animation */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ====== Apply Animations ====== */
+
+.hero-section {
+  animation: heroFadeIn 1.5s ease-out forwards;
+}
+
+.hero-content h1 {
+  animation: textSlideUp 1.2s ease-out forwards;
+}
+
+.hero-content p {
+  animation: textSlideUp 1.6s ease-out forwards;
+}
+
+.btn-hero {
+  animation: buttonPulse 2.8s ease-in-out forwards;
+}
+
+.patients-card {
+  animation: fadeInUp 1.4s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.avatar {
+  opacity: 0;
+  animation: popIn 0.5s ease forwards;
+  animation-fill-mode: forwards; /* ensures avatars stay visible */
+}
+
+/* Each avatar appears one after another */
+.avatar:nth-child(1) { animation-delay: 0.6s; }
+.avatar:nth-child(2) { animation-delay: 0.8s; }
+.avatar:nth-child(3) { animation-delay: 1s; }
+.avatar:nth-child(4) { animation-delay: 1.2s; }
+
+/* Keyframes for smooth pop-in */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 @media (max-width: 768px) {
 
@@ -479,6 +610,21 @@
 }
 
 .home-test-content  .read-more-btn:hover {
+  background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.read-more-btn .arrow {
+  display: inline-flex;
+  padding: 3px 0px;
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover .arrow {
+  transform: translateX(10px);
+}
+
+.read-more-btn:hover {
+  transform: translateY(-2px);
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
@@ -884,6 +1030,16 @@ display: inline-flex;
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
 }
 
+.diagnostic-btn .arrow {
+  display: inline-flex;
+  padding: 3px 0px;
+  transition: transform 0.3s ease;
+}
+
+.diagnostic-btn:hover .arrow {
+  transform: translateX(10px);
+}
+
 .diagnostic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -988,7 +1144,7 @@ display: inline-flex;
 .telescope-image img {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: 50px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -1029,7 +1185,7 @@ display: inline-flex;
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 45px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 

@@ -5,7 +5,7 @@
 
 .ultrasound_section{
     
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .ultrasound_section{
@@ -79,7 +79,17 @@
     box-shadow: 0 3px 8px rgba(255, 140, 0, 0.3);
 }
 .ultrasound_scan:hover{
+  transform: translateY(-2px);
   background: linear-gradient(84.92deg, #FFC180 34.11%, #F98D1B 105.58%);
+}
+
+.ultrasound_scan .icon_ultrasound {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.ultrasound_scan:hover .icon_ultrasound {
+  transform: translateX(10px);
 }
 
 
