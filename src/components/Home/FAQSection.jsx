@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-
 
 const faqs = [
   {
@@ -29,43 +27,89 @@ const faqs = [
 
 const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const containerRef = useRef(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  // ---------- scroll-trigger reveal (runs once per item) ----------
+  useEffect(() => {
+    const root = containerRef.current;
+    if (!root) return;
+
+    const items = Array.from(root.querySelectorAll(".faq-item"));
+    if (!items.length) return;
+
+    items.forEach((el, i) => {
+      el.classList.add("animate-on-scroll");
+      el.style.setProperty("--faq-idx", String(i));
+    });
+
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target); // run only once
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.12,
+      }
+    );
+
+    // start observing next frame (stable layout)
+    requestAnimationFrame(() => {
+      items.forEach((it) => io.observe(it));
+    });
+
+    // immediate check for elements already visible on load
+    items.forEach((it) => {
+      const r = it.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        it.classList.add("is-visible");
+        try {
+          io.unobserve(it);
+        } catch (e) {}
+      }
+    });
+
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="">
-    <section className="faq-section">
-      <div className="faq-container">
-        <h2 className="faq-title">Frequently Asked Questions</h2>
+    <div ref={containerRef}>
+      <section className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-title">Frequently Asked Questions</h2>
 
-        <div className="faq-list">
-          {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
-              <div
-                className="faq-question"
-                onClick={() => toggleFAQ(index)}
-              >
-                <h4>{faq.question}</h4>
-                <span className={`arrow ${activeIndex === index ? "open" : ""}`}>
-                  <IoIosArrowDown />
-                </span>
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <div key={index} className="faq-item">
+                <div
+                  className="faq-question"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <h4>{faq.question}</h4>
+                  <span
+                    className={`arrow ${activeIndex === index ? "open" : ""}`}
+                  >
+                    <IoIosArrowDown />
+                  </span>
+                </div>
+                <div className={`faq-answer ${activeIndex === index ? "show" : ""}`}>
+                  <p>{faq.answer}</p>
+                </div>
               </div>
-              <div
-                className={`faq-answer ${
-                  activeIndex === index ? "show" : ""
-                }`}
-              >
-                <p>{faq.answer}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
-
   );
 };
 

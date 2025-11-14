@@ -1,7 +1,38 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 
 export default function Herosetion() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // add visible class to trigger animation
+            entry.target.classList.add('is-visible');
+            // stop observing so it only happens once
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.18, // fire when ~18% of element is visible (adjust if you like)
+      }
+    );
+
+    // observe both left content and image so they animate slightly different
+    const targets = node.querySelectorAll('.animate-on-scroll');
+    targets.forEach(t => observer.observe(t));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
       <div className="container">
@@ -35,8 +66,8 @@ export default function Herosetion() {
       </div>
 
       <section className='container'>
-        <div className='home-test-container'>
-          <div className='home-test-content'>
+        <div className='home-test-container' ref={containerRef}>
+          <div className='home-test-content animate-on-scroll'>
             <h2> Stay Stress-Free <br />Get Yourself Tested  at Home</h2>
             <h3 className="sub-heading">At-home Tests</h3>
             <p>We know it’s not always easy to visit a diagnostic centre — especially if you’re unwell,
@@ -49,13 +80,11 @@ export default function Herosetion() {
               Read More <span className='arrow'><BsArrowUpRightCircleFill size={30}  /></span>
             </button>
           </div>
-          <div className='home-test-image'>
+          <div className='home-test-image animate-on-scroll'>
             <img src="images/lab-img.png" alt="lab-img" />
           </div>
         </div>
       </section>
-
-
     </div>
   )
 }

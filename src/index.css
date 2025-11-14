@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif !important;
 }
 
 /* Nav bar */
@@ -38,7 +39,7 @@
   text-decoration: none;
   color: #0961A1;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   transition: color 0.3s;
 }
 
@@ -55,7 +56,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #0961A1;
+  background: linear-gradient(180deg, #0961A1, #084b78);
   list-style: none;
   padding: 10px 0;
   border-radius: 8px;
@@ -107,7 +108,7 @@
   border: none;
   color: white;
   padding: 13px 20px;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
@@ -644,6 +645,78 @@
   border-radius: 18px;
 }
 
+/* ---------- Scroll-triggered animation helpers ---------- */
+
+/* initial state for items we animate */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 700ms cubic-bezier(.2,.9,.3,1), transform 700ms cubic-bezier(.2,.9,.3,1);
+  will-change: opacity, transform;
+  /* keep elements accessible while invisible (optional) */
+  pointer-events: none;
+}
+
+/* when visible, animation runs (class added by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* slightly different timing for the content vs image to feel natural */
+.home-test-content.animate-on-scroll {
+  transition-duration: 800ms;
+  transition-delay: 80ms;
+  transform-origin: left center;
+}
+
+.home-test-image.animate-on-scroll {
+  transition-duration: 900ms;
+  transition-delay: 220ms;
+  transform-origin: right center;
+}
+
+/* extra micro animation for button arrow on reveal */
+.home-test-content.animate-on-scroll.is-visible .read-more-btn {
+  transform: translateY(0);
+  transition: transform 450ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Optional: a slight stagger for child elements inside content */
+.home-test-content.animate-on-scroll.is-visible h2 {
+  transition: transform 650ms ease, opacity 650ms ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+.home-test-content.animate-on-scroll h2 {
+  transform: translateY(8px);
+  opacity: 0;
+  transition-delay: 120ms;
+}
+.home-test-content.animate-on-scroll.is-visible p {
+  transition-delay: 220ms;
+  transform: translateY(0);
+  opacity: 1;
+}
+.home-test-content.animate-on-scroll p {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+/* ---------------- Accessibility / reduced motion support ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible,
+  .home-test-content.animate-on-scroll,
+  .home-test-image.animate-on-scroll {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
 @media (max-width: 768px) {
   .home-test-container {
     grid-template-columns: 1fr;
@@ -691,6 +764,7 @@
     padding: 5px 11px;
   }
 }
+
 
 
 /* popular health package */
@@ -905,6 +979,54 @@
   color: white;
 }
 
+/* ---------- scroll-trigger card animation (runs once) ---------- */
+
+/* starting (hidden) state for cards */
+.card.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--stagger-index, 0) * 60ms); /* stagger */
+  will-change: transform, opacity;
+  pointer-events: none; /* becomes interactive after visible */
+}
+
+/* visible state applied once by observer */
+.card.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* micro header lift when revealed */
+.card.animate-on-scroll .card-header {
+  transform: translateY(6px);
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1) calc(var(--stagger-index, 0) * 40ms);
+}
+.card.animate-on-scroll.is-visible .card-header {
+  transform: translateY(0);
+}
+
+/* soften hover transform while animation exists */
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* accessibility: respects reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card.animate-on-scroll,
+  .card.animate-on-scroll.is-visible,
+  .card.animate-on-scroll .card-header {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
 @media (max-width: 1200px) {
   .card {
     min-width: 300px;
@@ -1078,6 +1200,70 @@ display: inline-flex;
   
 }
 
+/* ---------- scroll-trigger animations (run once) ---------- */
+
+/* base hidden state for any animated element */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--stagger-index, 0) * 70ms);
+  will-change: opacity, transform;
+  pointer-events: none; /* becomes interactive after reveal */
+}
+
+/* visible state (applied once by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* make left block come a bit earlier and slightly stronger */
+.left-diagnostic-section.animate-on-scroll {
+  transition-duration: 560ms;
+  transition-delay: calc(var(--stagger-index, 0) * 40ms);
+}
+
+/* cards: slightly faster pop and small upward lift on reveal */
+.diagnostic-card.animate-on-scroll {
+  transition-duration: 480ms;
+  transition-delay: calc(var(--stagger-index, 0) * 50ms);
+}
+.diagnostic-card.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* telescope image: scale+fade for a subtle pop */
+.telescope-image.animate-on-scroll {
+  transform: translateY(14px) scale(0.985);
+  transition-duration: 620ms;
+  transition-delay: calc(var(--stagger-index, 0) * 40ms);
+}
+.telescope-image.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* keep existing hover behaviors: soften transform while animation runs */
+.diagnostic-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
 @media (max-width: 992px) {
   .diagnostic-container {
     grid-template-columns: 1fr;
@@ -1243,6 +1429,76 @@ display: inline-flex;
   margin-bottom: 6px;
 }
 
+/* ---------- Reveal-on-scroll (runs once) ---------- */
+
+/* base hidden state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--reveal-index, 0) * 80ms);
+  will-change: opacity, transform;
+  pointer-events: none; /* element becomes interactive after reveal */
+}
+
+/* visible state (added once by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* image: subtle scale-up when revealed */
+.specialisation-image.animate-on-scroll {
+  transform: translateY(10px) scale(0.985);
+  transition-duration: 620ms;
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+.specialisation-image.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* title: stronger slide + fade */
+.specialisation-title.animate-on-scroll {
+  transform: translateY(24px);
+  transition-duration: 560ms;
+  transition-delay: calc(var(--reveal-index, 0) * 70ms);
+}
+.specialisation-title.animate-on-scroll.is-visible {
+  transform: translateY(0);
+}
+
+/* cards: small pop + upward motion with stagger */
+.specialisation-card.animate-on-scroll {
+  transform: translateY(18px) scale(0.99);
+  transition-duration: 480ms;
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+.specialisation-card.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* keep hover transform behavior but soften if animate present */
+.specialisation-card:hover {
+  transform: translateY(-5px);
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
 @media (max-width: 992px) {
   .specialisation-container {
     grid-template-columns: 1fr;
@@ -1386,6 +1642,73 @@ display: inline-flex;
   grid-row: span 2;
   min-height: 430px;
 }
+
+/* ---------- Reveal-on-scroll (runs once) ---------- */
+
+/* base (hidden) state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(22px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--reveal-idx, 0) * 70ms);
+  will-change: opacity, transform;
+  pointer-events: none; /* becomes interactive after reveal */
+}
+
+/* visible (added once by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* title specific tuning */
+.why-title.animate-on-scroll {
+  transform: translateY(28px);
+  transition-duration: 600ms;
+  transition-delay: calc(var(--reveal-idx, 0) * 40ms);
+}
+.why-title.animate-on-scroll.is-visible {
+  transform: translateY(0);
+}
+
+/* subtitle */
+.why-subtitle.animate-on-scroll {
+  transition-duration: 540ms;
+  transition-delay: calc(var(--reveal-idx, 0) * 60ms);
+}
+
+/* cards: pop + upward motion with slight stagger */
+.why-card.animate-on-scroll {
+  transform: translateY(18px) scale(0.99);
+  transition-duration: 480ms;
+  transition-delay: calc(var(--reveal-idx, 0) * 60ms);
+  opacity: 0;
+}
+.why-card.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* keep hover transform behavior */
+.why-card:hover {
+  transform: translateY(-4px);
+}
+
+/* respects reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
 
 @media (max-width: 992px) {
   .why-grid {
@@ -1550,6 +1873,82 @@ display: inline-flex;
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* ---------- feedback reveal-on-scroll (runs once) ---------- */
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.feedback-left h2{
+  animation: textSlideUp 1.2s ease-out forwards;
+}
+
+/* hidden state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+/* visible state (added once by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* specific tuning for left title/subtitle */
+.feedback-left h2.animate-on-scroll {
+  transform: translateY(28px);
+  transition-duration: 620ms;
+  transition-delay: calc(var(--reveal-index, 0) * 40ms);
+}
+.feedback-left p.animate-on-scroll {
+  transition-duration: 540ms;
+  transition-delay: calc(var(--reveal-index, 0) * 80ms);
+}
+
+/* cards: pop + upward motion */
+.feedback-card.animate-on-scroll {
+  transform: translateY(20px) scale(0.99);
+  transition-duration: 480ms;
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+  opacity: 0;
+}
+.feedback-card.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* keep hover transform behavior but softened during animation */
+.feedback-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Accessibility: respects prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
 
 @media (max-width: 1200px) {
   .feedback-left h2 {
@@ -1775,6 +2174,90 @@ display: inline-flex;
   object-fit: cover;
 }
 
+/* ---------- appointment reveal animations (run once) ---------- */
+
+/* base hidden state for animated targets */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--anim-i, 0) * 70ms);
+  will-change: opacity, transform;
+  pointer-events: none; /* becomes interactive after reveal */
+}
+
+/* visible state (added once by JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* subtle difference for background image (slower, slight scale) */
+.appointment-bgimg.animate-on-scroll {
+  transform: translateY(8px) scale(0.995);
+  transition-duration: 760ms;
+  transition-delay: calc(var(--anim-i, 0) * 60ms);
+  opacity: 0.0;
+}
+.appointment-bgimg.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* title: stronger slide and slightly earlier */
+.appointment-left h2.animate-on-scroll {
+  transform: translateY(28px);
+  transition-duration: 620ms;
+  transition-delay: calc(var(--anim-i, 0) * 50ms);
+}
+.appointment-left h2.animate-on-scroll.is-visible {
+  transform: translateY(0);
+}
+
+/* form fields: faster pop and staggered nicely */
+.appointment-form input.animate-on-scroll,
+.appointment-form select.animate-on-scroll {
+  transform: translateY(18px) scale(0.995);
+  transition-duration: 480ms;
+  transition-delay: calc(var(--anim-i, 0) * 70ms);
+}
+.appointment-form input.animate-on-scroll.is-visible,
+.appointment-form select.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* button: slight pop and no width jump */
+.book-btn.animate-on-scroll {
+  transform: translateY(20px) scale(0.985);
+  transition-duration: 520ms;
+  transition-delay: calc(var(--anim-i, 0) * 80ms);
+}
+.book-btn.animate-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* soften any hover transforms while animating */
+.appointment-form input:focus,
+.appointment-form select:focus {
+  outline: none;
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+
 @media (max-width: 900px) {
 
   .appointment-bgimg {
@@ -1930,6 +2413,71 @@ display: inline-flex;
 .arrow.open {
   transform: rotate(180deg);
 }
+
+/* ---------- FAQ reveal animations (run once) ---------- */
+
+/* initial hidden state for each FAQ item (question + answer block) */
+.faq-item.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--faq-idx, 0) * 60ms); /* stagger */
+  will-change: opacity, transform;
+  pointer-events: auto; /* keep interactions enabled (answers toggle still works) */
+}
+
+/* visible state applied by JS (only once) */
+.faq-item.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* subtle micro-animation for arrow rotation when revealed (not related to open state) */
+.faq-item.animate-on-scroll.is-visible .arrow {
+  transform: translateY(0);
+}
+
+/* ensure arrow rotation when opened still works */
+.faq-question .arrow {
+  font-size: 20px;
+  transition: transform 0.28s ease;
+}
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* keep existing answer expand behavior (no change) */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+.faq-answer.show {
+  max-height: 400px;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .faq-item.animate-on-scroll,
+  .faq-item.animate-on-scroll.is-visible,
+  .faq-question .arrow,
+  .faq-answer,
+  .faq-answer.show {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    max-height: none !important;
+  }
+}
+
 
 @media (max-width:768px){
   .faq-title{
@@ -2111,6 +2659,109 @@ font-family: "Inter", sans-serif;
 .bottom-links a:hover {
   color: #000000;
 }
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.footer-bottom {
+  animation: textSlideUp 1.2s ease-out forwards;
+}
+
+/* ---------- Footer reveal-on-scroll (runs once) ---------- */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  transition:
+    opacity 520ms cubic-bezier(.2,.9,.3,1),
+    transform 520ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--anim-idx, 0) * 80ms);
+  will-change: opacity, transform;
+  pointer-events: none; /* becomes interactive after reveal */
+}
+
+/* visible state set by JS; element animates only once */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* slightly different timing for footer-left (logo & socials) */
+.footer-left.animate-on-scroll {
+  transition-duration: 620ms;
+  transition-delay: calc(var(--anim-idx, 0) * 60ms);
+}
+
+/* footer-menu & footer-contact: collapse in together */
+.footer-menu.animate-on-scroll,
+.footer-contact.animate-on-scroll {
+  transition-duration: 520ms;
+  transition-delay: calc(var(--anim-idx, 0) * 80ms);
+}
+
+/* footer-bottom: last reveal */
+.footer-bottom.animate-on-scroll {
+  transition-duration: 680ms;
+  transition-delay: calc(var(--anim-idx, 0) * 100ms);
+}
+
+/* micro interaction: fade in social icons one-by-one after parent visible */
+.footer-left.is-visible .social-icons a {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 360ms ease, transform 360ms ease;
+}
+.footer-left.is-visible .social-icons a:nth-child(1) {
+  transition-delay: 120ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.footer-left.is-visible .social-icons a:nth-child(2) {
+  transition-delay: 180ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.footer-left.is-visible .social-icons a:nth-child(3) {
+  transition-delay: 240ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+.footer-left.is-visible .social-icons a:nth-child(4) {
+  transition-delay: 300ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* while hidden, keep social icons slightly invisible (so they animate in) */
+.footer-left .social-icons a {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* soft hover behavior stays (no change) */
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.is-visible,
+  .footer-left .social-icons a,
+  .footer-left.is-visible .social-icons a {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
 
 
 @media (max-width: 768px) {

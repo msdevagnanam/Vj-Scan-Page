@@ -34,18 +34,21 @@ const testimonials = [
 
 export default function FeedbackSection() {
   const sliderRef = useRef(null);
+  const rootRef = useRef(null);
   const [cardWidth, setCardWidth] = useState(0);
   const loopData = [
     testimonials[testimonials.length - 1],
     ...testimonials,
     testimonials[0],
   ];
+
   const updateCardWidth = () => {
     const firstCard = sliderRef.current?.querySelector(".feedback-card");
     if (!firstCard) return;
 
     const width = firstCard.offsetWidth + 20;
     setCardWidth(width);
+    // keep existing centering behaviour
     sliderRef.current.style.scrollBehavior = "auto";
     sliderRef.current.scrollLeft = width;
     sliderRef.current.style.scrollBehavior = "smooth";
@@ -62,6 +65,7 @@ export default function FeedbackSection() {
       window.removeEventListener("orientationchange", updateCardWidth);
     };
   }, []);
+
   const scroll = (direction) => {
     const slider = sliderRef.current;
     if (!slider || cardWidth === 0) return;
@@ -85,8 +89,66 @@ export default function FeedbackSection() {
     }
   };
 
+  /* ----------------- ANIMATION: scroll-trigger (runs once) ----------------- */
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    // Targets: left title, subtitle, and each feedback card
+    const title = root.querySelector(".feedback-left h2");
+    const subtitle = root.querySelector(".feedback-left p");
+    const cards = Array.from(root.querySelectorAll(".feedback-card"));
+
+    const targets = [];
+    if (title) targets.push(title);
+    if (subtitle) targets.push(subtitle);
+    cards.forEach((c) => targets.push(c));
+
+    // prepare classes + stagger index
+    targets.forEach((t, i) => {
+      t.classList.add("animate-on-scroll");
+      t.style.setProperty("--reveal-index", String(i));
+    });
+
+    const ioOptions = {
+      root: null, // viewport
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.12,
+    };
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // add visible class and unobserve so it runs only once
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, ioOptions);
+
+    // observe on next frame so layout is stable
+    requestAnimationFrame(() => {
+      targets.forEach((t) => io.observe(t));
+    });
+
+    // immediate check for mid-page loads
+    targets.forEach((t) => {
+      const r = t.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        t.classList.add("is-visible");
+        try {
+          io.unobserve(t);
+        } catch (e) {}
+      }
+    });
+
+    return () => {
+      io.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="feedback-section">
+    <section className="feedback-section" ref={rootRef}>
       <div className="feedback-left">
         <h2>Our Patients Feedback</h2>
         <p>These are some customer testimonials...</p>
@@ -142,7 +204,7 @@ export default function FeedbackSection() {
   display:none;
   }
 
-/* Tablet */
+  /* Tablet */
 @media (max-width: 900px) {
   .feedback-card {
     min-width: 300px;
@@ -157,7 +219,8 @@ export default function FeedbackSection() {
     max-width: 100%;
   }
 }
-  /* ✅ Mobile: Move arrows to bottom center */
+
+/* ✅ Mobile: Move arrows to bottom center */
 @media (max-width: 600px) {
 
   .arrow-buttons {
@@ -219,7 +282,7 @@ export default function FeedbackSection() {
   }
 }
 
-`}
+` }
       </style>
     </section>
   );

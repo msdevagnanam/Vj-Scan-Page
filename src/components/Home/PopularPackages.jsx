@@ -1,3 +1,4 @@
+// PopularPackages.jsx
 import React, { useRef, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -53,24 +54,28 @@ export default function PopularPackages() {
   const containerRef = useRef(null);
   const [cardWidth, setCardWidth] = useState(0);
   const loopData = [packages[packages.length - 1], ...packages, packages[0]];
+
   const updateCardWidth = () => {
     requestAnimationFrame(() => {
       const card = containerRef.current?.querySelector(".card");
       if (card) {
-        const width = card.getBoundingClientRect().width + 20; // gap
+        const width = Math.round(card.getBoundingClientRect().width) + 20; // gap
         setCardWidth(width);
       }
     });
   };
+
   useEffect(() => {
-    setTimeout(() => {
+    // initial width calc + keep in center
+    const init = () => {
       updateCardWidth();
       setTimeout(() => {
-        if (containerRef.current) {
+        if (containerRef.current && cardWidth) {
           containerRef.current.scrollLeft = cardWidth;
         }
-      }, 100);
-    }, 200);
+      }, 140);
+    };
+    init();
 
     window.addEventListener("resize", updateCardWidth);
     window.addEventListener("orientationchange", updateCardWidth);
@@ -80,6 +85,45 @@ export default function PopularPackages() {
       window.removeEventListener("orientationchange", updateCardWidth);
     };
   }, [cardWidth]);
+
+  // Scroll trigger observer for horizontal scroller (runs only once per card)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // collect card nodes AFTER render
+    const cards = Array.from(container.querySelectorAll(".card"));
+    if (!cards.length) return;
+
+    // add base class + stagger index
+    cards.forEach((c, i) => {
+      c.classList.add("animate-on-scroll");
+      c.style.setProperty("--stagger-index", String(i));
+    });
+
+    const observerOptions = {
+      root: container,             // observe within the horizontal scroller
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.15,             // trigger when ~15% visible
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target); // only once
+        }
+      });
+    }, observerOptions);
+
+    // Observe on next frame so layout is settled
+    requestAnimationFrame(() => {
+      cards.forEach((c) => observer.observe(c));
+    });
+
+    return () => observer.disconnect();
+  }, [containerRef, loopData]);
+
   const scroll = (direction) => {
     const container = containerRef.current;
     if (!container || !cardWidth) return;
@@ -90,7 +134,6 @@ export default function PopularPackages() {
       if (container.scrollLeft >= maxScrollLeft - cardWidth) {
         container.style.scrollBehavior = "auto";
         container.scrollLeft = 0;
-
         requestAnimationFrame(() => {
           container.style.scrollBehavior = "smooth";
         });
@@ -100,15 +143,14 @@ export default function PopularPackages() {
         behavior: "smooth",
       });
     } else {
+      // prev
       if (container.scrollLeft <= 0) {
         container.style.scrollBehavior = "auto";
         container.scrollLeft = maxScrollLeft - cardWidth;
-
         requestAnimationFrame(() => {
           container.style.scrollBehavior = "smooth";
         });
       }
-
       container.scrollTo({
         left: container.scrollLeft - cardWidth,
         behavior: "smooth",
@@ -148,10 +190,18 @@ export default function PopularPackages() {
           ))}
         </div>
         <div className="slider-nav">
-          <button className="nav-btn left" onClick={() => scroll("prev")}>
+          <button
+            className="nav-btn left"
+            onClick={() => scroll("prev")}
+            aria-label="Scroll left"
+          >
             <FaChevronLeft />
           </button>
-          <button className="nav-btn right" onClick={() => scroll("next")}>
+          <button
+            className="nav-btn right"
+            onClick={() => scroll("next")}
+            aria-label="Scroll right"
+          >
             <FaChevronRight />
           </button>
         </div>
