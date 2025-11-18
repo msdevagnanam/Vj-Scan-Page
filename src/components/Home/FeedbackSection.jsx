@@ -151,7 +151,7 @@ export default function FeedbackSection() {
     <section className="feedback-section" ref={rootRef}>
       <div className="feedback-left">
         <h2>Our Patients Feedback</h2>
-        <p>These are some customer testimonials...</p>
+        <p>These are some customer testimonials who are satisifed with the place & service we have provied</p>
         <div className="arrow-buttons desktop-arrows">
           <button className="left" onClick={() => scroll("left")}>
             <FaChevronLeft />

@@ -15,7 +15,6 @@ import Ultrasound from './pages/Ultrasound';
 
 const App = () => {
   return (
-    <div className='overflow-x-hidden'> 
 
       <Router>
        
@@ -29,7 +28,6 @@ const App = () => {
         </Routes>
        
       </Router>
-    </div>
   )
 }
 

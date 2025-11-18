@@ -1,8 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 *{
     margin: 0;
     padding: 0;
 }
 
+body{
+  font-family: 'Mulish', sans-serif;
+  box-sizing: border-box;
+  color: #333;
+  line-height: 1.6;
+}
 /* XrayHerosection */
 
 .x_ray_section{
@@ -45,18 +54,19 @@
 }
 
 .x_ray_left h1{
-    font-family: "Urbanist", sans-serif !important;
     font-size: 40px;
     color: #ffff;
     margin-bottom: 20px;
+    line-height: 1.3;
+    font-weight: 700;
 }
 
 .x_ray_left p{
-    font-family:"DM Sans", sans-serif !important;
     font-size: 18px;
     color: #ffff;
     margin-bottom: 30px;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .left-btn{
@@ -72,7 +82,6 @@
     color: #fff;
     font-weight: 500;
     font-size: 18px;
-    font-family: "Urbanist", sans-serif !important;
     padding: 10px 20px;
     border: none;
     border-radius: 999px;
@@ -117,7 +126,7 @@
 .icon_x_ray{
     background-color:#fff;
     border-radius: 50%;
-    padding: 8px;
+    padding: 5px;
     color: #F38919;
 }
 
@@ -223,7 +232,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
-  margin: 20px 0;
+  padding: 40px 0px ;
 }
 
 .x-ray-left img {
@@ -242,9 +251,8 @@
 }
 
 .x-ray-right h2 {
-  font-family: "Urbanist", sans-serif !important;
   font-size: 46px;
-  font-weight: 700;
+  font-weight: 800;
   color: #0961A1;
   margin-bottom: 20px;
   line-height: 1.3;
@@ -255,11 +263,11 @@
 }
 
 .x-ray-right p {
-  font-family:"DM Sans", sans-serif !important;
   font-size: 18px;
   color: #393939;
   line-height: 1.5;
   margin-bottom: 18px;
+  font-weight: 500;
 }
 
 .x-ray-btn {
@@ -270,7 +278,6 @@
     color: #fff;
     font-weight: 500;
     font-size: 18px;
-    font-family: "Urbanist", sans-serif !important;
     padding: 10px 20px;
     border: none;
     border-radius: 999px;
@@ -360,16 +367,14 @@
 }
 
 .x-ray-types-left h2 {
-  font-family: "Urbanist", sans-serif !important;
-  font-size: 44px;
-  font-weight: 700;
+  font-size: 46px;
+  font-weight: 800;
   color: #0961A1;
   margin-bottom: 20px;
   line-height: 1.3;
 }
 
 .x-ray-types-left p {
-  font-family:"DM Sans", sans-serif !important;
   font-size: 18px;
   color: #393939;
   line-height: 1.5;
@@ -384,7 +389,6 @@
     color: #fff;
     font-weight: 500;
     font-size: 18px;
-    font-family: "Urbanist", sans-serif !important;
     padding: 10px 20px;
     border: none;
     border-radius: 999px;
@@ -416,7 +420,7 @@
 .ct-card {
   background: linear-gradient(135deg, #F5F5F5 12.57%, #E5E5E5 86.98%);
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   text-align: center;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
   transition: 0.3s;
@@ -439,7 +443,6 @@
 }
 
 .pct-card p {
-  font-family: "DM Sans", sans-serif !important;
   font-size: 20px;
   font-weight: 500;
   color: #595959;

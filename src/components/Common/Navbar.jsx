@@ -8,8 +8,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+         <div className="navbar-container">
     <div className="container" >
-      <div className="navbar-container">
+      
         <nav className="nav-bar">
           <div className="logo">
             <a href="#">

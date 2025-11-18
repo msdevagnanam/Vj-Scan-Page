@@ -10,6 +10,7 @@ function CTScanTypes() {
   ];
 
   return (
+    
     <div className="ct-types-section">
       <div className="ct-types-left">
         <h2>
