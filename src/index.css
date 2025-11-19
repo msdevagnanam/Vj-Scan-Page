@@ -2608,6 +2608,12 @@ display: inline-flex;
   margin-bottom: 15px;
   color: #005ba3;
 }
+.footer-left p{
+  font-size: 18px;
+  color: #505258;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
 
 .social-icons {
   display: flex;
@@ -2706,11 +2712,16 @@ display: inline-flex;
 }
 
 .footer-bottom p{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   text-align: center;
   font-weight: 300;
-  
+}
 
+.footer-bottom{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .bottom-links a {
@@ -2827,6 +2838,46 @@ display: inline-flex;
   }
 }
 
+/* Initial hidden state applied by your JS */
+.footer-anim.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  /* filter: blur(4px); */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+  transition-delay: calc(var(--anim-idx, 0) * 120ms);
+}
+
+/* Visible state */
+.footer-anim.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Keyframe version for extra smoothness (used automatically) */
+.footer-anim.animate-on-scroll.is-visible {
+  animation: footerFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--anim-idx, 0) * 120ms);
+}
+
+@keyframes footerFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    /* filter: blur(6px); */
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+    /* filter: blur(0); */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
 
 
 @media (max-width: 768px) {
@@ -2855,6 +2906,9 @@ display: inline-flex;
   .footer-menu ul li a, .footer-contact ul li a {
     font-size: 16px;
   }
+  .footer-bottom{
+    flex-direction: column;
+  }
 }
 
 
@@ -2872,5 +2926,9 @@ display: inline-flex;
   }
   .social-icons {
     gap: 10px;
+  }
+
+  .footer-left p{
+    font-size: 14px;
   }
 }

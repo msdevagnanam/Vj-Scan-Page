@@ -4,31 +4,38 @@ import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 const testimonials = [
   {
     id: 1,
-    name: "Bimosaurus",
+    name: "Aravinth Uthamanathan",
     image: "images/Avatar.png",
     feedback:
-      "The coordinates were so kind and helpful in guiding us to the right test. Thank you so much for the great service. I would like to comeback here for our future services and would definitely spread a word across my surroundings.",
+      "Good Ambience, Staffs at reception and lab very friendly and polite, front office response is good and quick. Places are neat and clean. Mri and CT reports They will give within one hour. I am satisfied with their service. Highly recommend to VJ Scans and Labs,Thank you...!",
   },
   {
     id: 2,
-    name: "Bimosaurus",
+    name: "Krithika.D",
     image: "images/Avatar.png",
     feedback:
-      "The coordinates were so kind and helpful in guiding us to the right test. Thank you so much for the great service. I would like to comeback here for our future services and would definitely spread a word across my surroundings.",
+      "I went to lab for MRI scan. ..... seriously report was recieved too quickly. and staffs were so friendly and approachable. Thank you 👍",
   },
   {
     id: 3,
-    name: "Bimosaurus",
+    name: "Shalini Dhandapani",
     image: "images/Avatar.png",
     feedback:
-      "The coordinates were so kind and helpful in guiding us to the right test. Thank you so much for the great service. I would like to comeback here for our future services and would definitely spread a word across my surroundings.",
+      "This VJ scans and lab gave me the best experience than other lab ...the staffs working there was so friendly and easily approachable... Thank you 🙏",
   },
   {
     id: 4,
-    name: "Bimosaurus",
+    name: "Durga S",
     image: "images/Avatar.png",
     feedback:
-      "The coordinates were so kind and helpful in guiding us to the right test. Thank you so much for the great service. I would like to comeback here for our future services and would definitely spread a word across my surroundings.",
+      "I went for MRI scan....The atmosphere was nice and neat....The staffs was very good and friendly.....Report was dispatched within 1 hour...Best place to take scan",
+  },
+  {
+    id: 5,
+    name: "Vedhanayagi Arumugam",
+    image: "images/Avatar.png",
+    feedback:
+      "Clean and good environment. Front office response and follow up also too good. All staffs are very polite and good Service... Excellent.. Happy with the Service.",
   },
 ];
 

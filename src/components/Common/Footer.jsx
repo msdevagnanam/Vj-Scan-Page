@@ -65,13 +65,15 @@ const Footer = () => {
     <div className="container" ref={rootRef}>
       <div className="footer-section">
         <div className="footer-container">
-          <div className="footer-left">
+          <div className="footer-left footer-anim">
             <div className="footer-logo">
               <img src="images/Footer-logo.png" alt="" />
             </div>
-
+            <div>
+              <p>Leading medical diagnostics provider offering advanced diagnostic services.</p>
+            </div>
             <div className="socials">
-              <h4>Follow Us:</h4>
+              {/* <h4>Follow Us:</h4> */}
               <div className="social-icons">
                 <a href="#">
                   <FaFacebookF />
@@ -88,7 +90,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="footer-menu">
+          <div className="footer-menu footer-anim">
             <h4>Menu</h4>
             <ul>
               <li>
@@ -108,7 +110,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="footer-contact">
+          <div className="footer-contact footer-anim">
             <h4>Contact Us</h4>
             <ul>
               <li>
@@ -127,6 +129,7 @@ const Footer = () => {
           </div>
         </div>
 
+      <hr />
         <div className="footer-bottom">
           <div className="bottom-links">
             <a href="#">Privacy Policy</a>
